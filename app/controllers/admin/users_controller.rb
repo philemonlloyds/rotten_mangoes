@@ -1,6 +1,8 @@
 class Admin::UsersController < ApplicationController
+  before_filter :authorize_admin
+
   def index
-    @user = User.all
+    @user = User.all.page(params[:id])
   end
 
   def destroy
@@ -8,5 +10,8 @@ class Admin::UsersController < ApplicationController
     @user.destroy
     redirect_to admin_users_path
   end
+
+  protected
+  
 
 end

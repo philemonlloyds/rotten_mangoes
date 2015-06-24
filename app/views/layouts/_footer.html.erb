@@ -7,7 +7,7 @@
         <% end %>
         <% if current_user.try(:admin?) %>
           <% if current_user.admin %>
-        Hello Admin <%=current_user.full_name %> (<%= link_to "View Users", admin_users_path%>)
+        <%= link_to "View Users - as admin", admin_users_path%>
         <%end%>
         <%end%>
       </small>

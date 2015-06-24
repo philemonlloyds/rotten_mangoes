@@ -34,7 +34,7 @@ gem 'pry', :group => :development
 gem 'carrierwave'
 
 gem 'rmagick'
-
+gem 'kaminari', '~> 0.16.3'
 # Use unicorn as the app server
 # gem 'unicorn'
 

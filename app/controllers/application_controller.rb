@@ -13,7 +13,11 @@ class ApplicationController < ActionController::Base
     flash[:alert] = "You must log in."
     redirect_to new_session_path
     end
-  end 
+  end
+
+  def authorize_admin
+    redirect_to root_path, alert: "Access Denied #{current_user.firstname} no no no" unless current_user.admin?
+  end
 
   helper_method :current_user
 
