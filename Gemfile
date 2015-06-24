@@ -33,7 +33,7 @@ gem 'pry', :group => :development
 
 gem 'carrierwave'
 
-# gem 'rmagick', '~> 2.15.2'
+gem 'rmagick'
 
 # Use unicorn as the app server
 # gem 'unicorn'
