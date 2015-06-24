@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
   end
 
   def authorize_admin
-    redirect_to root_path, alert: "Access Denied #{current_user.firstname.capitalize} no no no" unless current_user.admin?
+    redirect_to root_path, flash[:alert] = "Access Denied #{current_user.firstname.capitalize} no no no" unless current_user.admin?
   end
 
   helper_method :current_user

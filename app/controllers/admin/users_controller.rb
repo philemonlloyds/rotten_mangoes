@@ -2,7 +2,9 @@ class Admin::UsersController < ApplicationController
   before_filter :authorize_admin
 
   def index
-    @user = User.all.page(params[:id])
+    @users = User.all.page(params[:id])
+    @movies = Movie.all.page(params[:title])
+    @reviews = Review.all.page(params[:user_id])
   end
 
   def destroy
@@ -11,7 +13,5 @@ class Admin::UsersController < ApplicationController
     redirect_to admin_users_path
   end
 
-  protected
-  
 
 end

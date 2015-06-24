@@ -1,5 +1,5 @@
 <h1>Welcome Admin</h1>
-<%= paginate @user%>
+<%= paginate @users%>
 <%=link_to "Create_User",new_user_path%>
 <table>
 <colgroup span="3" class="columns"></colgroup>
@@ -10,7 +10,7 @@
   <th>Admin</th>
   <th>Delete</th>
 </tr>
-  <%@user.each do |user|%>
+  <%@users.each do |user|%>
 <tr>
   <td><%=user.firstname%></td>
   <td><%=user.lastname%></td>
@@ -19,4 +19,22 @@
   <td><%=link_to "Delete_User",admin_user_path(user), method: :delete, confirm: "You sure?"%></td>
 </tr>
 <%end%>
+</table>
+
+<h2> Movies and reviews List </h2>
+<table>
+<tr>
+  <th>Movie Title</th>
+  <th>Movie Reviews</th>
+  <th>Movie reviewed by</th>
+</tr>
+  <%@movies.each do |movie|%>
+  <tr>
+  <td><%=movie.title%></td>
+  <%movie.reviews.each do |review|%>
+  <td><%=review.text%></td>
+  <td><%=review.user_id%></td>
+  <%end%>
+  <%end%>
+</tr>
 </table>
