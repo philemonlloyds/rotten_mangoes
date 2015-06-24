@@ -1,6 +1,6 @@
 <%= link_to "Back to all movies", movies_path %>
 
-<%= form_for @movie do |f| %>
+<%= form_for @movie,html: {multipart: true} do |f| %>
 
   <% if @movie.errors.any? %>
     <div id="error_explanation">
@@ -37,10 +37,13 @@
   </p>
 
    <p>
-    <%= f.label :poster_image_url %><br>
-    <%= f.text_field :poster_image_url %>
+    <%= f.file_field :image %>
   </p>
 
+  <p>
+    <%= f.label :remote_image_url,"or image url"%>
+    <%= f.text_field :remote_image_url%>
+  </p>
     <p>
     <%= f.label :release_date %><br>
     <%= f.date_field :release_date %>

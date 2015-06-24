@@ -31,6 +31,10 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem 'pry', :group => :development
 
+gem 'carrierwave'
+
+gem 'rmagick', '~> 2.15.2'
+
 # Use unicorn as the app server
 # gem 'unicorn'
 
