@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   resources :movies, :reviews, :users
   end
 
+get '/search' => 'search#search', :as => 'search'
+
+# resources :search
  resources :movies do
    resources :reviews, only: [:new, :create]
  end

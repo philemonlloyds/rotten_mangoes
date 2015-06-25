@@ -1,7 +1,15 @@
 class MoviesController < ApplicationController
 
   def index
-    @movies = Movie.all
+    @movies = Movie.search(params[:search])
+    case params[:duration].to_i
+    when 1
+      @movies = @movies.minutes_under_90
+    when 2
+      @movies = @movies.minutes_between_90_120
+    when 3
+      @movies = @movies.minutes_over_120
+    end
   end
 
   def show
@@ -14,6 +22,29 @@ class MoviesController < ApplicationController
 
   def edit
     @movie = Movie.find(params[:id])
+  end
+
+  def search
+    # @movies || = find_movies
+    # if params[:qt]!=""
+    #   @movies = Movie.where("title like ?", "%#{params[:qt]}%")
+    # elsif params[:qd]!=""
+    #   @movies = Movie.where("director like ?", "%#{params[:qd]}%")
+    # else
+    #   if params[:Duration] == "Under 90 minutes"
+    #     @movies = Movie.where("runtime_in_minutes  <= ?", 90)
+    #   elsif params[:Duration] =="Between 90 and 120 minutes"
+    #     @movies = Movie.where("runtime_in_minutes = ? OR runtime_in_minutes <= ?", 90,120)
+    #   else
+    #     @movies = Movie.where("runtime_in_minutes  > ?", 120)
+    #   end
+    # end
+    # redirect_to movies_path(@movies)
+  end
+
+  def find_movies
+    search = Movie.scoped({})
+    # scope = scope.scoped conditions:
   end
 
   def create

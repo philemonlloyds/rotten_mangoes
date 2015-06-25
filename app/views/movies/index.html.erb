@@ -1,5 +1,18 @@
 <h1>Rotten Mangoes</h1>
   <%= link_to "Submit a movie!", new_movie_path %>
+  
+  <%= form_tag movies_path, method: 'get' do %>
+  <%= text_field_tag :search %>
+  <select name="duration">
+    <option disabled selected>Duration</option>
+    <option value="1">Under 90 minutes</option>
+    <option value="2">Between 90 - 120 minutes</option>
+    <option value="3">Over 120 minutes</option>
+  </select>
+  <%= submit_tag "Search", name: nil %>
+<% end %>
+
+
   <hr>
   <% @movies.each do |movie| %>
   <%= link_to image_tag(movie.image), movie_path(movie) %>

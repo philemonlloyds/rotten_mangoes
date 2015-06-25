@@ -15,6 +15,12 @@ class Movie < ActiveRecord::Base
     end
   end
 
+    scope :search, ->(query) { where("title LIKE ? OR director LIKE ?", "%#{query}%", "%#{query}%") }
+    scope :minutes_under_90, -> { where("runtime_in_minutes < 90") }
+    scope :minutes_between_90_120, -> { where("runtime_in_minutes >= 90 AND runtime_in_minutes <= 120") }
+    scope :minutes_over_120, -> { where("runtime_in_minutes > 120") }
+
+
 protected
   def release_date_is_in_the_future
     if release_date.present?
